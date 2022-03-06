@@ -1,44 +1,26 @@
-import React, { useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-//import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import db from './firebase/firebaseConfig';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePages from './pages/HomePages';
+import LogInPages from './pages/LogInPages';
+import SingUpPages from './pages/SingUpPages';
+import NotFoundPages from './pages/NotFoundPages';
+import Navbar from './components/Navbar';
 
-/*
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-*/
-const App = () => {
-  useEffect( () => {
-    const obtenerDatos = async() => {
-      const datos = await getDocs(collection(db, 'usuarios'));
-      datos.forEach((documento) => {
-        console.log(documento.data());
-      });
-    }
-    obtenerDatos();
-  }, [ ]);
+
+export default function App() {
   return ( 
-    <h1>Firebase9!!!!!</h1>
-  );
+    <BrowserRouter>
+      <Navbar />
+      <Routes> 
+        <Route path="/" element={<LogInPages/>} />
+        <Route path="/singup" element={<SingUpPages/>} />
+        <Route path="/home" element={<HomePages/>} />
+        <Route path="*" element={<NotFoundPages/>} />
+      </Routes>
+    </BrowserRouter>
+  );  
 }
 
-export default App;
+
+
