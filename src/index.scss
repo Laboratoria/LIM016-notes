@@ -1,20 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@1&family=Roboto+Serif:ital,wght@1,200&family=Roboto:ital,wght@1,100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&family=Roboto:wght@100&family=Rock+Salt&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto Serif', serif;
   background: url(../public/img/background.jpg);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+main {
+  max-width: 900px;
+  width: 90%;
+  margin: auto;
+  padding: 40px;
+}
+
+section {
+  display: block;
+  padding: 2px 2px 2px 2px;
 }
 
 .eslogan{
@@ -67,4 +76,3 @@ code {
       margin-bottom: 2rem;
   }
 }
-
