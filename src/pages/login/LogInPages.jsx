@@ -20,12 +20,8 @@ export default function LogInPages() {
   return (
     <main>
       <section>
-        <p>LAB NOTES</p>
-        
-        <p>Bienvenid@ a LabNotes </p>
-      </section> 
-      <section>
         <Formulario action = "">
+          <p>Bienvenid@ a LabNotes </p>
           <div>
             <Label htmlFor="email">Email</Label>
             <GrupoInput>

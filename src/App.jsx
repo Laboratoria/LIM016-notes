@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.scss';
+import './index.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePages from './pages/HomePages';
-import LogInPages from './pages/login/LogInPages';
+import LogInPages from './pages/LogInPages';
 import SingUpPages from './pages/SingUpPages';
 import NotFoundPages from './pages/NotFoundPages';
 
