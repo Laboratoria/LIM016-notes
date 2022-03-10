@@ -4,6 +4,10 @@ import '../Estilos/register.scss';
 
 export const ViewNotes = () =>{
     return (
-        <h3>hola mundo</h3>
+        <section>
+            <header>
+                <h3>Simple Notes</h3>
+            </header>
+        </section>
     );
 };
