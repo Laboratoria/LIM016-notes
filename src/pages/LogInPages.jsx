@@ -13,14 +13,14 @@ import {
   Boton, 
   MensajeExito, 
   MensajeError 
-} from './login/Formularios';
+} from './Estilos/Formularios';
 
 export default function LogInPages() {
   return (
         <div id="template" className="templateLogin">
           <div id="Logo" className="containerLogin">
             <p className="eslogan">Tomar notas nunca fue tan sencillo</p>
-            <figure><img className="imagenFondo" src="/img/logincontainer.jpg" alt=""></img></figure>
+            <figure><img className="imagenFondo" src="/img/anotar-rbg.png" alt=""></img></figure>
           </div>
           <div id="login" className="containerForm">
             <div className="titulo">

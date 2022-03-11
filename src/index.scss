@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: 'Roboto Serif', serif;
-  background: url(../public/img/background.jpg);
+  background: url(../public/img/fondo.jpg);
 }
 
 main {
@@ -32,6 +32,8 @@ section {
   text-align: center;
   padding-bottom: 1rem;
   margin-top: 4rem;
+  color: #2A3F88;
+  width:80%;
 }
 
 .imagenFondo{
@@ -43,6 +45,10 @@ section {
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+.login{
+  margin-top: 2rem;
 }
 .title{
   font-family: 'Rock Salt', cursive;
@@ -57,22 +63,37 @@ section {
   height: 3rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
+  .templateLogin{
+    margin-top: 3rem;
+    display: flex;
+  }
 
   .containerLogin{
-        width: 45%;
+        width: 50%;
         float: left;
         flex-direction: column;
         display: flex;
         align-items: center;
-        margin-top: 3rem;
+        margin-top: 6rem
   }
 
   .containerForm{
       height: max-content;
-      width:50%; 
+      width:40%; 
       float:right; 
       margin: 1%;
       margin-bottom: 2rem;
+      margin-top: 6rem;
   }
+}
+
+@media only screen and (max-width: 767px) {
+  .containerLogin {
+    display: none;
+  }
+  .containerForm{
+    margin: 4rem;
+  }
+
 }
