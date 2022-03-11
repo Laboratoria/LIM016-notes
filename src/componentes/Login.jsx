@@ -17,7 +17,9 @@ export const LogIn = () => {
             <form action="" className='box-form' id='log'>
                 <input type="text" className='email' id='log' placeholder='Enter your email'/>
                 <input type="password" className='paswword' id='log' placeholder='Password'/>
-                <button type='submit' className='btn-login' id='log'><Link to = '/viewnotes'>Log In</Link></button>
+                <button type='submit' className='btn-login' id='log'>
+                    <Link to = '/viewnotes'>Log In</Link>
+                </button>
             </form>
             <p className='textOption' id='log'>or log in with:</p>
             <div className='box-fb-go' id='log'>
