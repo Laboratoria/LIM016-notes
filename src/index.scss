@@ -63,6 +63,13 @@ section {
   height: 3rem;
 }
 
+.header{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 @media (min-width: 768px) {
   .templateLogin{
     margin-top: 3rem;
