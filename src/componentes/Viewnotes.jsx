@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../Estilos/Note.scss';
 import {MdLogout, MdSearch} from 'react-icons/md'
 import {AddNotes} from './AddNotes';
+import {Notes} from './Notes';
 
 const imgMas = new URL ('../imagenes/mas.png', import.meta.url);
 const imgCategoria = new URL ('../imagenes/categoria.png', import.meta.url);
@@ -32,11 +33,7 @@ export const ViewNotes = () =>{
                 </div>
                 <div className='box-notes'>
                     <AddNotes></AddNotes>
-                    <AddNotes></AddNotes>
-                    <AddNotes></AddNotes>
-                    <AddNotes></AddNotes>
-                    <AddNotes></AddNotes>
-                    <AddNotes></AddNotes>
+                    <Notes></Notes>
                 </div>
             </main>
         </section>
