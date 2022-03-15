@@ -9,6 +9,16 @@ import {
   signOut,
  } from 'firebase/auth';
 
+ import { 
+   getFirestore,
+   collection,
+   addDoc,
+   doc,
+   getDoc,
+   query,
+   where,
+   getDocs
+ } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyBkUNvRt7tYhGlV3z5nvMhLEG5ylQywhqE',
@@ -22,10 +32,25 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
+// Export fireAuth
 export {
   auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 };
+
+// Export FireStore
+
+export {
+  db,
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  query,
+  where,
+  getDocs
+}
