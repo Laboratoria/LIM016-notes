@@ -1,14 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../Estilos/Note.scss';
 import {MdLogout, MdSearch} from 'react-icons/md'
 import {AddNotes} from './AddNotes';
 import {Notes} from './Notes';
+import {getNotesByUser} from '../firebase/firestore';
 
 const imgMas = new URL ('../imagenes/mas.png', import.meta.url);
 const imgCategoria = new URL ('../imagenes/categoria.png', import.meta.url);
 const imgRecycle = new URL ('../imagenes/recycle-bin.png', import.meta.url);
 
 export const ViewNotes = () =>{
+
+    const [arrayNotes, setArrayNotes] = useState([]);
+    let tempArrayNotes = [];   
+    useEffect(()=>{
+        getNotesByUser("lucia@gmail.com")
+        .then((response) => {   
+            response.forEach(note => {
+                tempArrayNotes.push(note.data());
+            });
+            setArrayNotes(tempArrayNotes);
+        })
+        .catch((error) => console.log('Error: ', error.message))        
+    },[]);
+
     return (
         <section className='contentNote'>
             <header className='box-header'>
@@ -32,8 +47,8 @@ export const ViewNotes = () =>{
                     <p>Recycle</p>
                 </div>
                 <div className='box-notes'>
-                    <AddNotes></AddNotes>
-                    <Notes></Notes>
+                    <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes}></AddNotes>
+                    <Notes notes = {arrayNotes}></Notes>                                    
                 </div>
             </main>
         </section>
