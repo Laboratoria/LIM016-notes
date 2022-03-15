@@ -7,7 +7,8 @@ export const Notes = ( props ) => {
     const templateList = props.notes.map((note) => {
         // eslint-disable-next-line react/jsx-key
         let key = 0;
-       return <div key={key+1} className='note-list'>
+       return (
+        <div key={key+1} className='note-list'>
             <h3>{note.title}</h3>
             <p>{note.description}</p>
             <div className='note-footer'>
@@ -17,7 +18,8 @@ export const Notes = ( props ) => {
                     <MdCreate className='create-icon' size='1.3em'></MdCreate>
                 </div>
             </div>
-        </div>        
+        </div>
+        )
     });
     return templateList; 
 };

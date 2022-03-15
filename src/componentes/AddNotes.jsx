@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Estilos/register.scss';
-import {addNote, getNote} from '../firebase/firestore';
+import {addNote} from '../firebase/firestore';
 
 // eslint-disable-next-line react/prop-types
 export const AddNotes = ( { arrayNotes, setArrayNotes } ) => {
@@ -21,16 +21,13 @@ export const AddNotes = ( { arrayNotes, setArrayNotes } ) => {
   }
 
     return (
-        <div className='note-neww'>
-            <form onSubmit={saveNotes} className='note-new'>
-                <input type="text" placeholder='Note Title' id='title'/>
-                <textarea cols="10" rows="8" placeholder='Type to add a note' id='description'></textarea>
-                <div className='note-footer'>
-                    <button type='submit'>Save</button>
-                    <button>Cancel</button>
-                </div>
-            </form>
-            
-        </div>
+        <form onSubmit={saveNotes} className='note-new'>
+            <input type="text" placeholder='Note Title' id='title'/>
+            <textarea cols="10" rows="8" placeholder='Type to add a note' id='description'></textarea>
+            <div className='note-footer'>
+                <button type='submit'>Save</button>
+                <button>Cancel</button>
+            </div>
+        </form>
     )
 }; 

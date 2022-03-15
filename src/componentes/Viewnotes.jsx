@@ -39,12 +39,12 @@ export const ViewNotes = () =>{
             </header>
             <main className='box-option-notes'>
                 <div className='box-option'>
-                    <img src={imgMas} alt=""></img>
-                    <p>Add Notes</p>
-                    <img src={imgCategoria} alt=""></img>
-                    <p>Category</p>
-                    <img src={imgRecycle} alt=""></img>
-                    <p>Recycle</p>
+                    <img src={imgMas} alt="" id='img-option'></img>
+                    <p id='img-option'>Add Notes</p>
+                    <img src={imgCategoria} alt="" id='img-option'></img>
+                    <p id='img-option'>Category</p>
+                    <img src={imgRecycle} alt="" id='img-option'></img>
+                    <p id='img-option'>Recycle</p>
                 </div>
                 <div className='box-notes'>
                     <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes}></AddNotes>
