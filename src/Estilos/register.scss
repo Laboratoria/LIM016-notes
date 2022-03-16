@@ -1,26 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Risque&display=swap');
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-#root{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(52, 111, 174, 0.8);
-  width: 100%;
-  height: 100%;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .box-login, .box-signup{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
-  align-content: center;
-  align-items: center;
+  height: 100vh;
+  background-color: rgba(52, 111, 174, 0.8);
 }
 
 .box-logo{

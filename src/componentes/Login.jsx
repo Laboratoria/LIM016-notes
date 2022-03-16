@@ -7,6 +7,12 @@ const imgIconoGo = new URL ('../imagenes/iconoGo.png', import.meta.url);
 const imgIconoFb = new URL ('../imagenes/iconoFb.png', import.meta.url);
 
 export const LogIn = () => {
+    const [] = useState(false);
+
+
+
+
+
     return (
         <section className='box-login'>
             <h3 className='welcome' id='log'>Welcome To</h3>

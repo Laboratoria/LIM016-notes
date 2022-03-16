@@ -17,7 +17,8 @@ import {
    getDoc,
    query,
    where,
-   getDocs
+   getDocs,
+   onSnapshot
  } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -52,5 +53,6 @@ export {
   getDoc,
   query,
   where,
-  getDocs
+  getDocs,
+  onSnapshot
 }

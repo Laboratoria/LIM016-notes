@@ -10,14 +10,15 @@ export const AddNotes = ( { arrayNotes, setArrayNotes } ) => {
         const title = e.target.title.value;
         const description = e.target.description.value;
         const date =  new Date().toLocaleDateString(); 
-        const newArrayNotes = [...arrayNotes, {userId:'lucia@gmail.com', title: title, description: description}]
+        const newArrayNotes = [...arrayNotes, {userId:'lucia@gmail.com', title: title, description: description, date: date}]
 
         addNote("lucia@gmail.com", title, description, date)
         .then((response)=>{
             e.target.reset();
             setArrayNotes(newArrayNotes);
         })
-        .catch((error) => console.log(error.message));        
+        .catch((error) => console.log(error.message));   
+        //unsubscribe('lucia@gmail.com');     
   }
 
     return (

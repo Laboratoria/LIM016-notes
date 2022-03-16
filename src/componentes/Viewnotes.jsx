@@ -12,16 +12,18 @@ const imgRecycle = new URL ('../imagenes/recycle-bin.png', import.meta.url);
 export const ViewNotes = () =>{
 
     const [arrayNotes, setArrayNotes] = useState([]);
-    let tempArrayNotes = [];   
+
+    let tempArrayNotes = [];  
+    let userId = 'lucia@gmail.com'; 
     useEffect(()=>{
-        getNotesByUser("lucia@gmail.com")
+        getNotesByUser(userId)
         .then((response) => {   
             response.forEach(note => {
                 tempArrayNotes.push(note.data());
             });
             setArrayNotes(tempArrayNotes);
         })
-        .catch((error) => console.log('Error: ', error.message))        
+        .catch((error) => console.log('Error: ', error.message)) 
     },[]);
 
     return (

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { MdDeleteForever, MdCreate } from 'react-icons/md';
 
 export const Notes = ( props ) => { 
+    let key = 0;
     // eslint-disable-next-line react/prop-types
     const templateList = props.notes.map((note) => {
         // eslint-disable-next-line react/jsx-key
-        let key = 0;
+        key ++;
        return (
-        <div key={key+1} className='note-list'>
+        <div key={key} className='note-list'>
             <h3>{note.title}</h3>
             <p>{note.description}</p>
             <div className='note-footer'>
