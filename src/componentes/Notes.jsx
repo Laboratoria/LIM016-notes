@@ -8,7 +8,8 @@ export const Notes = ( props ) => {
 
         const deleteNotes = (idNote) => {
             deleteNote(idNote);
-            const newArrayNotes = props.arrayNotes.filter((objNote)=>objNote.id!==idNote)
+            const newArrayNotes = props.arrayNotes.filter((objNote)=>objNote.id!==idNote);
+            props.setArrayNotes(newArrayNotes);
 
         }
         /*
