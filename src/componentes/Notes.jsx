@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdDeleteForever, MdCreate } from 'react-icons/md';
-import {deleteNote, upDateNote} from '../firebase/firestore';
+import { deleteNote } from '../firebase/firestore';
 
 export const Notes = ( props ) => { 
     
@@ -8,19 +8,9 @@ export const Notes = ( props ) => {
 
         const deleteNotes = (idNote) => {
             deleteNote(idNote);
-            const newArrayNotes = props.arrayNotes.filter((objNote)=>objNote.id!==idNote);
+            const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
             props.setArrayNotes(newArrayNotes);
-
         }
-        /*
-            upDateNote(, {...newArrayNotes})
-            props.setArrayNotes(newArrayNotes);
-
-            //Eliminar del farebase
-            //Pasar las notas a un nuevo array
-            //Eliminar la nota del newArrayNotes 
-            //Actualizar el estado arrayNotes
-       */
 
        return (
         <div key={note.id} className='note-list'>

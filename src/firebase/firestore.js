@@ -7,7 +7,6 @@ import {
     query,
     where,
     getDocs,
-    updateDoc,
     onSnapshot,
     deleteDoc
 } from './config'
@@ -25,4 +24,3 @@ const queryGetNotesByUser = (userId) => query(collection(db, "notes"), where("us
 export const getNotesByUser =  (userId) => getDocs(queryGetNotesByUser(userId));
 export const getNote = (id) => getDoc(doc(db, 'notes', id));
 export const deleteNote = (id) => deleteDoc(doc(db, 'notes', id));
-export const upDateNote = (id, newObjPost) => updateDoc(doc(db, 'post', id), newObjPost);
