@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import '../Estilos/register.scss';
+import { auth } from '../firebase/config';
+import {createUser} from '../firebase/auth';
 
 export const imgLogoNotes = new URL ('../imagenes/logoNotes.jpg', import.meta.url);
 const imgIconoGo = new URL ('../imagenes/iconoGo.png', import.meta.url);
 const imgIconoFb = new URL ('../imagenes/iconoFb.png', import.meta.url);
 
 export const LogIn = () => {
-    const [] = useState(false);
-
-
-
-
-
+    const[userName, setName] = useState('');
+    const[userEmail, setEmail] = useState('');
+  
     return (
         <section className='box-login'>
             <h3 className='welcome' id='log'>Welcome To</h3>
