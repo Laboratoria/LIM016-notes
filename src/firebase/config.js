@@ -16,10 +16,12 @@ import {
    addDoc,
    doc,
    getDoc,
+   setDoc,
    query,
    where,
    getDocs,
-   onSnapshot
+   onSnapshot,
+   deleteDoc,
  } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -53,8 +55,10 @@ export {
   addDoc,
   doc,
   getDoc,
+  setDoc,
   query,
   where,
   getDocs,
-  onSnapshot
+  onSnapshot,
+  deleteDoc,
 }

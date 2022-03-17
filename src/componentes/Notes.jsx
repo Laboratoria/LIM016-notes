@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 import { MdDeleteForever, MdCreate } from 'react-icons/md';
+import { deleteNote } from '../firebase/firestore';
 
 export const Notes = ( props ) => { 
-    let key = 0;
-    // eslint-disable-next-line react/prop-types
-    const templateList = props.notes.map((note) => {
-        // eslint-disable-next-line react/jsx-key
-        key ++;
+    
+    const templateList = props.arrayNotes.map((note) => {
+
+        const deleteNotes = (idNote) => {
+            deleteNote(idNote);
+            const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
+            props.setArrayNotes(newArrayNotes);
+        }
+
        return (
-        <div key={key} className='note-list'>
+        <div key={note.id} className='note-list'>
             <h3>{note.title}</h3>
             <p>{note.description}</p>
             <div className='note-footer'>
                 <h2> {note.date}.</h2>
                 <div>
-                    <MdDeleteForever className='delete-icon' size='1.3em'></MdDeleteForever>
+                    <MdDeleteForever className='delete-icon' size='1.3em' onClick={()=> deleteNotes(note.id)}></MdDeleteForever>
                     <MdCreate className='create-icon' size='1.3em'></MdCreate>
                 </div>
             </div>
         </div>
         )
     });
+
+
     return templateList; 
 };
 
