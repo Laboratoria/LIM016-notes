@@ -26,6 +26,10 @@ section {
   padding: 2px 2px 2px 2px;
 }
 
+section > p{
+  text-align: center;
+}
+
 .eslogan{
   font-size: 1.5rem;
   font-family: 'Rock Salt', cursive;
@@ -70,6 +74,27 @@ section {
   justify-content: space-around;
 }
 
+
+form{
+  padding: 30px  60px;
+  border-radius: 10px;
+}
+
+button{
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: none;
+  background-color: #2A3F88;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
 @media (min-width: 768px) {
   .templateLogin{
     margin-top: 3rem;
@@ -87,11 +112,11 @@ section {
 
   .containerForm{
       height: max-content;
-      width:40%; 
+      width:50%; 
       float:right; 
       margin: 1%;
       margin-bottom: 2rem;
-      margin-top: 6rem;
+      margin-top: 3rem;
   }
 }
 
@@ -101,6 +126,12 @@ section {
   }
   .containerForm{
     margin: 4rem;
+  }  
+  .title{
+    font-size: 1.8rem;
+  }
+  form{
+    padding: 10px  0px;
   }
 
 }
