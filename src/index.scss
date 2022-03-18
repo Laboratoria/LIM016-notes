@@ -74,7 +74,6 @@ section > p{
   justify-content: space-around;
 }
 
-
 form{
   padding: 30px  60px;
   border-radius: 10px;
@@ -97,7 +96,7 @@ button{
 
 @media (min-width: 768px) {
   .templateLogin{
-    margin-top: 3rem;
+    margin-top: 1rem;
     display: flex;
   }
 
@@ -107,7 +106,7 @@ button{
         flex-direction: column;
         display: flex;
         align-items: center;
-        margin-top: 6rem
+        margin-top: 4rem
   }
 
   .containerForm{

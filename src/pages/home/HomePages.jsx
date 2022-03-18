@@ -7,7 +7,7 @@ export default function HomePages() {
     <section className="templatehome" >
       <Principal />
       <main>
-        <Aside />
+        <Menu />
       </main>
     </section>
   )
