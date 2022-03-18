@@ -56,18 +56,20 @@ export default function LogInPages() {
         <div id="login" className="login">
           <section>
             <p >Bienvenido a LabNotes</p>
+            <div className="center">
               <form onSubmit={handleSubmit}>
-                {inputs.map((input) => (
-                  <FormInput
-                    key={input.id}
-                    {...input}
-                    value={values[input.name]}
-                    onChange={onChange}
-                  />
-                ))}
-                <p>¿Has Olvidado la Contraseña?</p>
-                <button>Iniciar Sessión</button>
-              </form>              
+                  {inputs.map((input) => (
+                    <FormInput
+                      key={input.id}
+                      {...input}
+                      value={values[input.name]}
+                      onChange={onChange}
+                    />
+                  ))}
+                  <p>¿Has Olvidado la Contraseña?</p>
+                  <button>Iniciar Sessión</button>
+                </form> 
+            </div>                
            
             <p>O Inicia Sessión Con:</p>
             <div style={{fontSize:"2em", color: "#2A3F88", textAlign: "center"}}>           
