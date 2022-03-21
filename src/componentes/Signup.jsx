@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { imgLogoNotes } from './Login';
 import '../Estilos/register.scss';
-import { createUser } from '../firebase/auth';
+import { useAuth } from '../firebase/auth';
 
 export const SignUp = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
-    //const [error, setError] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleName = (e) => setName(e.target.value);
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
     const handleSubmit = async (e) => {
         e.preventDefault()
-        createUser(email, password)
-            .then((res) => alert('Registered User'))
-            .catch(err => console.log(err));
+        try {
+            await createUser(email, password)
+            navigate.push('/')
+        } catch(error) {
+            setError('Your email or password are wrong');  
+        }
     };
     return (
         <section className='box-signup'>
