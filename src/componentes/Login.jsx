@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Estilos/register.scss';
-import {useAuth } from '../firebase/auth'
+import {signIn } from '../firebase/auth'
 
 
 export const imgLogoNotes = new URL('../imagenes/logoNotes.jpg', import.meta.url);
@@ -9,11 +9,10 @@ const imgIconoGo = new URL('../imagenes/iconoGo.png', import.meta.url);
 const imgIconoFb = new URL('../imagenes/iconoFb.png', import.meta.url);
 
 export const LogIn = () => {
-    const{signIn} = useAuth();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate();
+    const navigate = useNavigate ();
     
 
     const handleEmail = (e) => setEmail(e.target.value);
@@ -21,13 +20,12 @@ export const LogIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await signIn(email, password)
-            navigate.push('/viewnotes')
+            const user = await signIn(email, password)
+            const currentUser = user.user.uid;
+            navigate('/viewnotes', user.user.id)
         } catch(error) {
             setError('Your email or password are wrong');  
-        }
-        
-            
+        }      
     }
     return (
         <section className='box-login'>
@@ -40,7 +38,7 @@ export const LogIn = () => {
             <form action="" className='box-form' id='log' onSubmit={handleSubmit}>
                 <input type="text" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
                 <input type="password" className='paswword' id='log' placeholder='Password' onChange={handlePassword} />
-                <button type='submit' className='btn-login' id='log'value={signIn} >Log In</button>
+                <button type='submit' className='btn-login' id='log' >Log In</button>
             </form>
             <p className='textOption' id='log'>or log in with:</p>
             <div className='box-fb-go' id='log'>

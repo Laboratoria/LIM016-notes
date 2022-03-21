@@ -1,21 +1,27 @@
+/* eslint-disable react/prop-types */
 import React, {useState, useEffect} from 'react';
 import '../Estilos/Note.scss';
 import {MdLogout, MdSearch} from 'react-icons/md'
 import {AddNotes} from './AddNotes';
 import {Notes} from './Notes';
 import {getNotesByUser} from '../firebase/firestore';
+import { userSignOut } from '../firebase/auth';
+import {useNavigate } from 'react-router-dom';
 
 const imgMas = new URL ('../imagenes/mas.png', import.meta.url);
 const imgCategoria = new URL ('../imagenes/categoria.png', import.meta.url);
 const imgRecycle = new URL ('../imagenes/recycle-bin.png', import.meta.url);
 
-export const ViewNotes = () =>{
+export const ViewNotes = (props) =>{
 
     const [arrayNotes, setArrayNotes] = useState([]);
     const [stateAddNote, setStateAddNote] = useState(false);
+    const [error, setError] = useState('');
+    const navigate = useNavigate ();
 
     let tempArrayNotes = [];  
-    let userId = 'lucia@gmail.com'; 
+    let userId = props.currentUser;
+    console.log('id de viewnotes', userId) 
     useEffect(()=>{
         getNotesByUser(userId)
         .then((response) => {
@@ -33,6 +39,19 @@ export const ViewNotes = () =>{
         setStateAddNote(true);
     }
 
+    const handleSingOut = async() => {
+        try {
+           const userLogOut =  await userSignOut()
+           console.log('funcionará?', navigate)
+
+        console.log('Salir', userLogOut)
+            navigate('/')
+        } catch (error) {
+            setError('Server error');
+            
+        }
+        //userSignOut()
+    }
     return (
         <section className='contentNote'>
             <header className='box-header'>
@@ -42,7 +61,7 @@ export const ViewNotes = () =>{
                     <input type="search" placeholder='Find Your Note'/>
                 </div>
                 <div className='signout'>
-                    <MdLogout className='Logout-icon' size='3em'></MdLogout>
+                    <MdLogout className='Logout-icon' size='3em' onClick={handleSingOut}></MdLogout>
                     <p>sign out</p>
                 </div>
             </header>
