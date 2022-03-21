@@ -119,7 +119,7 @@ export const ViewNotes = (props) =>{
                 <div className='box-notes' >
                     {
                         stateAddNote?
-                        <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes} setStateAddNote={setStateAddNote}></AddNotes>
+                        <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes} setStateAddNote={setStateAddNote} currentUserId ={userId}></AddNotes>
                         : null
                     }
                     {
