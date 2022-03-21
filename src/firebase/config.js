@@ -22,6 +22,7 @@ import {
    getDocs,
    onSnapshot,
    deleteDoc,
+   updateDoc
  } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -61,4 +62,5 @@ export {
   getDocs,
   onSnapshot,
   deleteDoc,
+  updateDoc
 }

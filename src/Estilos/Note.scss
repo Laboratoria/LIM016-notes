@@ -59,7 +59,7 @@
     width: 100%;
 }
 
-#img-option{
+.img-option{
     padding: 0.5em;
 }
 
@@ -86,14 +86,17 @@
 }
 
 .box-option>p{
-    font-size: 1em;
+    font-size: 14px;
+    object-fit: contain;
+    font-weight: bolder
 }
 
 .note-new{
     background-color: #fef68a;
     border-radius: 10px;
     padding: 1rem;
-    min-height: 170px;
+    width: 170px;
+    height: 170px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -104,6 +107,10 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+  }
+
+  .note-footer>h2{
+      font-size: 1em;
   }
   
   .note-list{

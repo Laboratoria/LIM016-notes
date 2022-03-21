@@ -8,16 +8,21 @@ export const AddNotes = ( props ) => {
 
     const saveNotes = (e) => {
         e.preventDefault();
-        const title = e.target.title.value;
-        const description = e.target.description.value;
-        if(title==='' && description===''){
-            return alert('Write a note!!');
+        const note = {
+            userId: 'lucia@gmail.com',
+            title:e.target.title.value, 
+            description: e.target.description.value, 
+            state: true, 
+            date: new Date().toLocaleDateString()
         }
-        const date =  new Date().toLocaleDateString();        
+        if(note.title==='' && note.description===''){
+            return alert('Write a note!!');
+        }     
 
-        addNote("lucia@gmail.com", title, description, date)
+        addNote(note)
         .then((response)=>{
-            const newArrayNotes = [...props.arrayNotes, {userId:'lucia@gmail.com', title: title, description: description, date: date, id: response.id}]
+            note.id = response.id;
+            const newArrayNotes = [...props.arrayNotes, note]
             e.target.reset();
             props.setArrayNotes(newArrayNotes);
             props.setStateAddNote(false);
