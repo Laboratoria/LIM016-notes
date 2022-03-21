@@ -50,15 +50,11 @@ export const ViewNotes = (props) =>{
     const handleSingOut = async() => {
         try {
            const userLogOut =  await userSignOut()
-           console.log('funcionará?', navigate)
-
-        console.log('Salir', userLogOut)
             navigate('/')
         } catch (error) {
             setError('Server error');
             
         }
-        //userSignOut()
     }
     const recycler = () =>{
         setStateRecycle(true);

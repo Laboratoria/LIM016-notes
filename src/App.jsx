@@ -14,11 +14,8 @@ function App() {
   useEffect(() => {
     const unSuscribe = stateAuthUser((user) => {
       if (user == null || user == undefined) {
-        alert ('No Exite usuario')
       } else {
         setCurrentUser(user.email);
-        alert('Usuario Logeado');
-
       }
 
     })

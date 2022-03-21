@@ -6,13 +6,13 @@ export const Notes = ( props ) => {
 
     const deleteNotes = (idNote, title) => {
         //deleteNote(idNote);
-        const confirmDelete = confirm('¿Seguro que desea eliminar la nota ' + title +'?');
+        const confirmDelete = confirm('Do you want to delete the note ' + title +'?');
         if(confirmDelete){
             updateStateNote(idNote).then(() => {
                 const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
                 props.setArrayNotes(newArrayNotes);
             }).catch(() => { 
-                alert('Error al intentar eliminar la nota '+ idNote)
+                alert('Error trying to delete note '+ idNote)
             });
         }      
         
