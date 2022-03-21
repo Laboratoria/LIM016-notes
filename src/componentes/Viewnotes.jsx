@@ -108,7 +108,8 @@ export const ViewNotes = () =>{
                       
                     {
                         stateRecycle?
-                        <Recycle arrayNotes = {arrayNotes} setArrayNotes={setArrayNotes}></Recycle> : null
+                            <Recycle arrayNotes = {arrayNotes} setArrayNotes={setArrayNotes}></Recycle> 
+                        : null
                     }
                                                      
                 </div>

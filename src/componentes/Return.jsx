@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { MdUndo } from 'react-icons/md';
+import { MdUndo} from 'react-icons/md';
 import {getNotesByUserAndState} from '../firebase/firestore';
 
 export const Return = ( props ) => { 
@@ -23,7 +23,7 @@ export const Return = ( props ) => {
 
     return (
         <div className='icon-return'>
-            <MdUndo onClick={returnNotes} size='3em'></MdUndo>  
+            <MdUndo onClick={returnNotes} size='3em'></MdUndo>
             <p>Return</p>                      
         </div>
     )
