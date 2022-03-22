@@ -5,12 +5,7 @@ import {updateStateNote } from '../firebase/firestore';
 export const Notes = ( props ) => { 
 
     const deleteNotes = (idNote, title) => {
-<<<<<<< HEAD
-        const confirmDelete = confirm('¿Seguro que desea eliminar la nota ' + title +'?');
-=======
-        //deleteNote(idNote);
         const confirmDelete = confirm('Do you want to delete the note ' + title +'?');
->>>>>>> e4542b8e2ade4690de94263de53906c8edbcaea1
         if(confirmDelete){
             updateStateNote(idNote).then(() => {
                 const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
