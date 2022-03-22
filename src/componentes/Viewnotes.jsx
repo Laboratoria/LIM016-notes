@@ -28,7 +28,6 @@ export const ViewNotes = (props) =>{
 
     let tempArrayNotes = [];  
     let userId = props.currentUser;
-    console.log('id de viewnotes', userId) 
     useEffect(()=>{
         getNotesByUserAndState(userId, true)
         .then((response) => {

@@ -34,7 +34,7 @@ export const SignUp = () => {
             {error && <p className='error'>{error}</p>}
             <form onSubmit={handleSubmit} action="" className='box-form' id='log'>
                 <input type="text" className='name-user' id='log' placeholder='Enter your name' onChange={handleName} />
-                <input type="text" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
+                <input type="email" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
                 <input type="password" className='paswword' id='log' placeholder='Password' onChange={handlePassword} />
                 <button type='submit' className='btn-signup' id='log'> Sign Up</button>
             </form>
