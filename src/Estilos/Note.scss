@@ -7,31 +7,33 @@
 }
 
 .box-header{
-    display: flex;
-    width: 100%;
-    background-color: #D9D2D2;
-    padding: 0.5em;
-    flex-direction: row;
+    display: grid;
     align-items: center;
-    justify-content: space-around;
+    justify-items: center;
+    background-color: #D9D2D2;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 1em;
+    padding: 0.5em;
+    min-height: 10vh;
 }
 
 .signout{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     cursor: pointer;
+    display: grid;
+    justify-items: center;
 }
 
 .box-header>h3{
-    font-family: 'Risque'; 
-    font-size: 2em;
+    display: grid;
+    font-family: "Risque";
+    font-size: 40px;
 }
 
 .box-search{
-    display: flex;
-    align-items: center;
-    background-color: rgb(233, 233, 233);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 2px;
+    background-color: #e9e9e9;
     border-radius: 2em;
     padding: 0.5em;
 }
@@ -49,14 +51,14 @@
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-    width: 90%;
     padding: 2em;
 }
 
 .box-option-notes{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 2em;
+    min-height: 90vh;
 }
 
 .img-option{
@@ -68,14 +70,13 @@
 }
 
 .box-option{
-    display: flex;
-    flex-direction: column;
+    display: grid;
     background-color: rgba(255, 255, 255, 0.8);
     width: 100px;
     height: 450px;
-    justify-content: space-evenly;
     align-items: center;
     margin: 0.8em;
+    justify-items: center;
 }
 
 .box-option>img{

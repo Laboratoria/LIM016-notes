@@ -13,7 +13,6 @@ export const LogIn = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate ();
-    
 
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
@@ -36,7 +35,7 @@ export const LogIn = () => {
             </div>
             {error && <p className='error'>{error}</p>}
             <form action="" className='box-form' id='log' onSubmit={handleSubmit}>
-                <input type="text" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
+                <input type="email" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
                 <input type="password" className='paswword' id='log' placeholder='Password' onChange={handlePassword} />
                 <button type='submit' className='btn-login' id='log' >Log In</button>
             </form>
