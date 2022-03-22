@@ -1,7 +1,8 @@
 .formInput{
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 75%;
+    justify-items: center;
 }
 
 input{
