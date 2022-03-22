@@ -6,7 +6,7 @@ import {deleteNote, updateStateNote } from '../firebase/firestore';
 export const Recycle = (  props ) => { 
 
     const deleteNoteRecycler = (idNote, title) => {
-        const confirmDelete = confirm('¿Seguro que desea eliminar la nota ' + title + 'de forma permanente ' +'?');
+        const confirmDelete = confirm('Are you sure you want to permanently delete ' + title + ' note?');
         if(confirmDelete){
                 const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
                 props.setArrayNotes(newArrayNotes);

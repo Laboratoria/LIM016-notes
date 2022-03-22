@@ -9,7 +9,7 @@ export const AddNotes = ( props ) => {
     const saveNotes = (e) => {
         e.preventDefault();
         const note = {
-            userId: 'lucia@gmail.com',
+            userId: props.currentUserId,
             title:e.target.title.value, 
             description: e.target.description.value, 
             state: true, 

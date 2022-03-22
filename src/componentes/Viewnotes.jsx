@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, {useState, useEffect} from 'react';
 import '../Estilos/Note.scss';
 import { Return } from './Return';
 import {MdLogout, MdSearch} from 'react-icons/md'
 import {AddNotes} from './AddNotes';
 import {Notes} from './Notes';
+import {getNotesByUser} from '../firebase/firestore';
+import { userSignOut } from '../firebase/auth';
+import {useNavigate } from 'react-router-dom';
 import {getNotesByUserAndState} from '../firebase/firestore';
 import {Recycle} from './Recycle'
 
@@ -11,16 +15,20 @@ const imgMas = new URL ('../imagenes/mas.png', import.meta.url);
 const imgCategoria = new URL ('../imagenes/categoria.png', import.meta.url);
 const imgRecycle = new URL ('../imagenes/recycle-bin.png', import.meta.url);
 
-export const ViewNotes = () =>{
+export const ViewNotes = (props) =>{
 
     const [arrayNotes, setArrayNotes] = useState([]);
     const [stateAddNote, setStateAddNote] = useState(false);
+    const [error, setError] = useState('');
+    const navigate = useNavigate ();
     const [stateRecycle, setStateRecycle] = useState(false);
     const [stateReturn, setStateReturn] = useState(false);
     const [stateGetNotes, setStateGetNotes] = useState(true);
 
+
     let tempArrayNotes = [];  
-    let userId = 'lucia@gmail.com'; 
+    let userId = props.currentUser;
+    console.log('id de viewnotes', userId) 
     useEffect(()=>{
         getNotesByUserAndState(userId, true)
         .then((response) => {
@@ -38,6 +46,16 @@ export const ViewNotes = () =>{
         setStateAddNote(true);
     }
 
+
+    const handleSingOut = async() => {
+        try {
+           const userLogOut =  await userSignOut()
+            navigate('/')
+        } catch (error) {
+            setError('Server error');
+            
+        }
+    }
     const recycler = () =>{
         setStateRecycle(true);
         setStateReturn(true);
@@ -66,7 +84,7 @@ export const ViewNotes = () =>{
                     <input type="search" placeholder='Find Your Note'/>
                 </div>
                 <div className='signout'>
-                    <MdLogout className='Logout-icon' size='3em'></MdLogout>
+                    <MdLogout className='Logout-icon' size='3em' onClick={handleSingOut}></MdLogout>
                     <p>sign out</p>
                 </div>
             </header>
@@ -97,7 +115,7 @@ export const ViewNotes = () =>{
                 <div className='box-notes' >
                     {
                         stateAddNote?
-                        <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes} setStateAddNote={setStateAddNote}></AddNotes>
+                        <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes} setStateAddNote={setStateAddNote} currentUserId ={userId}></AddNotes>
                         : null
                     }
                     {
