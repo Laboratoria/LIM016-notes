@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./../context/AuthContext";
-
-
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-
 import FormInput from "./../components/FormInput";
 import Footer from "./../components/Footer";
 
 export default function SingUpPages() {
-  const { signup } = useAuth;
+  const { signup } = useAuth();
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -27,7 +21,7 @@ export default function SingUpPages() {
       errorMessage:
         "Username puede usar 3-6 carácteres y puede incluir un carácter especial!",
       label: "Username",
-      pattern: "^[A-Za-z0-9]{3,6}$",
+      pattern: "^[A-Za-z0-9]{3,7}$",
       required: true,
     },
     {      
@@ -63,8 +57,7 @@ export default function SingUpPages() {
     e.preventDefault();
     setError("");
     try {
-      console.log(values.email, values.password);
-      signup(values.email, values.password).then( e => console.log(e));
+      await signup(values.email, values.password);
       navigate("/");
     } catch (er) {
       setError(er.message);
@@ -77,18 +70,16 @@ export default function SingUpPages() {
     <>
     <div id="template" className="templateLogin">
       <div className="container">
-      <div className="titulo">
+        <div className="titulo">
           <h1 className="title">LABNOTES</h1>
           <img className="logo2" src="/img/notas.png" alt=""/>
         </div>
         <div id="Logo" className="containerLogin">
         <p >Tomar notas nunca fue tan sencillo</p>
           <figure><img className="imagenFondo" src="/img/anotar-rbg.png" alt=""></img></figure>
-        </div>
-        
+        </div>        
       </div>
-      <div id="login" className="containerForm">
-        
+      <div id="login" className="containerForm">        
         <div id="login" className="login">
           <section>
             <p className="title">Regístrate</p>
@@ -106,13 +97,8 @@ export default function SingUpPages() {
                   <p>¿Has Olvidado la Contraseña?</p>
                   <button>Regístrate</button>
                 </form> 
-            </div>                
-           
-            <p>O Inicia Sessión Con:</p>
-            <div style={{fontSize:"2em", color: "#2A3F88", textAlign: "center"}}>           
-              <FontAwesomeIcon icon={faGoogle} /> {" "}
-            </div>
-            <p>¿No tienes una cuenta? <Link to="/">LogIn</Link></p>            
+            </div>        
+            <p>¿Tienes una cuenta? <Link to="/">LogIn</Link></p>            
           </section>           
         </div>
       </div>     
