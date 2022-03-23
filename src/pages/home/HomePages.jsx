@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Principal from "./Principal";
 /*import Aside from "./Aside"*/
 export default function HomePages() {

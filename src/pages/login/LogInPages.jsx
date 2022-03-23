@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import FormInput from "./../../components/FormInput";
+import Footer from "./../../components/Footer";
+
+
 
 export default function LogInPages() {
-  const [values, setValues] = useState({
-    username: "",
+  const [values, setValues] = useState({    
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const inputs = [   
@@ -36,6 +37,7 @@ export default function LogInPages() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
   };
 
   const onChange = (e) => {
@@ -43,6 +45,7 @@ export default function LogInPages() {
   };
 
   return (
+    <>
     <div id="template" className="templateLogin">
       <div id="Logo" className="containerLogin">
         <p className="eslogan">Tomar notas nunca fue tan sencillo</p>
@@ -78,7 +81,9 @@ export default function LogInPages() {
             <p>¿No tienes una cuenta? <a>Registrate</a></p>            
           </section>           
         </div>
-      </div>
+      </div>     
     </div>
+     <Footer />
+     </>
     )
 }
