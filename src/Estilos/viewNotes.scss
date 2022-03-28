@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Risque&display=swap');
+
+.contentNote{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(52, 111, 174, 0.8);
+}
+
+.box-header{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+    background-color: #D9D2D2;
+    width: 100%;
+    height: 10%;
+}
+
+.boxName>h3{
+    font-family: "Risque";
+    font-size: 40px;
+}
+
+.box-search{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 2px;
+    background-color: #e9e9e9;
+    border-radius: 2em;
+    padding: 0.3em;
+}
+
+.box-search>input{
+    border: none;
+    background-color: rgb(233, 233, 233);
+}
+
+.box-search>input:focus{
+    outline: none;
+}
+
+.box-header >.signout{
+    cursor: pointer;
+    display: grid;
+    justify-items: center;
+    padding: 0.5em;
+}
+
+.signout>p{
+    font-size: 1em;
+}
+
+.box-option-notes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+}
+
+.box-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    margin: 1rem;
+}
+
+.box-option>.boxOptionBtn{
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 420px;
+    height: 90px;
+    margin: 0.8em;
+    border-radius: 2em;
+    justify-content: space-evenly;
+}
+
+.boxOptionBtn>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.boxOptionBtn>div>img{
+    max-width: 3em;
+    max-height: 3em;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.boxOptionBtn>div>p{
+    font-size: 15px;
+}
+
+.box-notes{
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+    height: 85%;
+    grid-auto-rows: 10rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    padding: 1.5rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+//Estilo para el listado de notas
+
+.note-list{
+    background-color: #8afee9;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0em .5em .5em rgba(14, 13, 13, 0.5);
+  }
+
+  .note-list>p{
+    white-space: pre-line
+  }
+
+  .note-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .note-footer>h2{
+    font-size: 1em;
+  }
+
+//Estlos para agregar notas
+
+.note-new{
+    background-color: #fef68a;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0em .5em .5em rgba(14, 13, 13, 0.5);
+  }
+
+  .note-new>textarea{
+    resize: none;
+    border-radius: 0.5em;
+    border: .2em solid rgb(191, 186, 186);
+  }
+
+  .note-new>input{
+    border-radius: 0.5em;
+    border: .2em solid rgb(191, 186, 186);
+  }
+
+  .note-new>.note-footer{
+    display: flex;
+    justify-content: space-around;
+    margin: 0.2em;
+  }
+
+  .note-footer>button{
+    box-shadow: 0em .5em .5em rgba(14, 13, 13, 0.5);
+    border: .2em solid rgb(191, 186, 186);
+    width: 4rem;
+    height: 2em;
+    border-radius: 0.3rem;
+
+  }
