@@ -10,9 +10,23 @@ export const Recycle = (  props ) => {
         if(confirmDelete){
                 const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
                 props.setArrayNotes(newArrayNotes);
+                props.setSearchArrayNotes(newArrayNotes);
                 deleteNote(idNote); 
             }
-        };    
+        }; 
+    const resetNotes = (idNote, title) => {
+            const confirmDelete = confirm('Desea reastaurar la nota ' + title +'?');
+            if(confirmDelete){
+                updateStateNote(idNote, true).then(() => {
+                    const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
+                    props.setArrayNotes(newArrayNotes);
+                    props.setSearchArrayNotes(newArrayNotes);
+                }).catch(() => { 
+                    alert('Error trying to delete note '+ idNote)
+                });
+            }      
+            
+        }   
 
     const templateList = props.arrayNotes.map((note) => {
         return (
@@ -23,7 +37,7 @@ export const Recycle = (  props ) => {
                     <h2></h2>
                     <div>
                         <MdDeleteForever className='delete-icon' size='1.3em'onClick={()=> deleteNoteRecycler(note.id, note.title)}></MdDeleteForever>
-                        <MdAutorenew size='1.3em'></MdAutorenew>  
+                        <MdAutorenew size='1.3em' onClick={()=> resetNotes(note.id, note.title)}></MdAutorenew>  
                     </div>
                 </div>
             </div>

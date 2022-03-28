@@ -7,13 +7,21 @@
   box-sizing: border-box;
 }
 
-.box-login, .box-signup{
-  display: grid;
+.box-login{
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
   background-color: rgba(52, 111, 174, 0.8);
+}
+
+.boxWelcome>h3{
+  display: flex;
+  justify-content: center;
+  color: aliceblue;
+  font-size: 2em;
 }
 
 .box-logo{
@@ -22,28 +30,14 @@
   align-items: center;
 }
 
-.img-logo{
+.box-logo>img{
   width: 10em;
   height: 10em;
   border-radius: 50%;
 }
 
-#log{
-  margin-bottom: 0.7em;
-}
-
-.welcome, .welcome-signup{
-  font-size: 2em;
-}
-
-.welcome, .textOption, .optionSignUp, .name-notes, .welcome-signup, .optionLogin{
-  display: flex;
-  width: 100%;
-  justify-content: center;
+.box-logo>h1{
   color: aliceblue;
-}
-
-.name-notes{
   letter-spacing: 0.1rem;
   font-size: 4em;
   font-family: 'Risque', cursive;
@@ -51,26 +45,44 @@
 
 .box-form{
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  align-content: center;
+  background-color: rgba(245, 246, 247, 0.2);
+  padding: 1.5em;
+  border-radius: 2em;
 }
 
-.box-form > input{
+.box-form >.boxInput{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-form > p{
+  color: aliceblue;
+  font-weight: bolder;
+  margin-bottom: 1em;
+}
+
+
+.boxInput > input{
   border-radius: 1em;
   width: 20em;
   padding: 0.5em;
   box-shadow: 0em .5em .5em rgba(0, 0, 0, 0.2);
   outline: none;
+  margin-bottom: 1em;
   border: .2em solid rgb(191, 186, 186);
 }
 
-.box-form > button{
+.boxInput > button{
   border-radius: 1em;
   width: 10em;
   padding: 0.5em;
   box-shadow: 0px .5em .5em rgba(0, 0, 0, 0.2);
   outline: none;
+  margin-bottom: 1em;
   border: .2em solid rgb(191, 186, 186);
   background-color: #F2F484;
   cursor:pointer;
@@ -85,6 +97,55 @@
 .box-fb-go > img{
   width: 2em;
   height: 2em;
+  margin-bottom: 1em;
+  cursor:pointer;
+}
+
+
+//Estilos Sign Up
+
+.box-signup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(52, 111, 174, 0.8);
+}
+
+.boxWelcomeSignUp>h3{
+  display: flex;
+  justify-content: center;
+  color: aliceblue;
+  font-size: 2em;
+}
+
+.box-form >.boxInputSignUp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boxInputSignUp > input{
+  border-radius: 1em;
+  width: 20em;
+  padding: 0.5em;
+  box-shadow: 0em .5em .5em rgba(0, 0, 0, 0.2);
+  outline: none;
+  margin-bottom: 1em;
+  border: .2em solid rgb(191, 186, 186);
+}
+
+.boxInputSignUp > button{
+  border-radius: 1em;
+  width: 10em;
+  padding: 0.5em;
+  box-shadow: 0px .5em .5em rgba(0, 0, 0, 0.2);
+  outline: none;
+  margin-bottom: 1em;
+  border: .2em solid rgb(191, 186, 186);
+  background-color: #F2F484;
   cursor:pointer;
 }
 

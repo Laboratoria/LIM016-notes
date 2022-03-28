@@ -26,19 +26,25 @@ export const SignUp = () => {
     }
     return (
         <section className='box-signup'>
-            <h3 className='welcome-signup' id='log'>Sign Up To</h3>
-            <div className='box-logo' id='log'>
-                <img src={imgLogoNotes} alt="" className='img-logo' id='log'></img>
-                <h1 className='name-notes' id='log'>Simple Notes</h1>
+            <div className='boxWelcomeSignUp'>
+                <h3 className='welcome-signup'>Sign Up To</h3>
+                <div className='box-logo'>
+                    <img src={imgLogoNotes} alt="" className='img-logo'></img>
+                    <h1 className='name-notes'>Simple Notes</h1>
+                </div>
+
             </div>
+            
             {error && <p className='error'>{error}</p>}
-            <form onSubmit={handleSubmit} action="" className='box-form' id='log'>
-                <input type="text" className='name-user' id='log' placeholder='Enter your name' onChange={handleName} />
-                <input type="email" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
-                <input type="password" className='paswword' id='log' placeholder='Password' onChange={handlePassword} />
-                <button type='submit' className='btn-signup' id='log'> Sign Up</button>
+            <form onSubmit={handleSubmit} action="" className='box-form'>
+                <div className='boxInputSignUp'> 
+                    <input type="text" className='name-user' placeholder='Enter your name' onChange={handleName} />
+                    <input type="email" className='email' placeholder='Enter your email' onChange={handleEmail} />
+                    <input type="password" className='paswword' placeholder='Password' onChange={handlePassword} />
+                    <button type='submit' className='btn-signup'> Sign Up</button>
+                </div>
+                <p className='optionLogin'>Do you have an account?<Link to='/login'>Log In</Link></p>
             </form>
-            <p className='optionLogin' id='log'>Do you have an account?<Link to='/login'>Log In</Link></p>
         </section>
     );
 };

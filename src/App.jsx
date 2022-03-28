@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     try{
       stateAuthUser((user) => {
-        const usuario = user.email;
+        const usuario = user?.email;
         if (usuario == null || usuario == undefined) {
           setCurrentUser(null)
         } else {

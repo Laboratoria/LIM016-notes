@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
 import React, {useState, useEffect} from 'react';
-import '../Estilos/Note.scss';
+import '../Estilos/viewNotes.scss';
 import { Return } from './Return';
 import {MdLogout, MdSearch} from 'react-icons/md'
 import {AddNotes} from './AddNotes';
 import {Notes} from './Notes';
-import {getNotesByUser} from '../firebase/firestore';
 import { userSignOut } from '../firebase/auth';
 import {useNavigate } from 'react-router-dom';
 import {getNotesByUserAndState} from '../firebase/firestore';
 import {Recycle} from './Recycle'
 
-const imgMas = new URL ('../imagenes/mas.png', import.meta.url);
-const imgCategoria = new URL ('../imagenes/categoria.png', import.meta.url);
-const imgRecycle = new URL ('../imagenes/recycle-bin.png', import.meta.url);
+import  imgMas from '../imagenes/mas.png';
+import  imgCategoria from '../imagenes/categoria.png';
+import  imgRecycle from '../imagenes/recycle-bin.png';
+import { connectFirestoreEmulator } from 'firebase/firestore';
 
 export const ViewNotes = (props) =>{
 
@@ -24,6 +24,7 @@ export const ViewNotes = (props) =>{
     const [stateRecycle, setStateRecycle] = useState(false);
     const [stateReturn, setStateReturn] = useState(false);
     const [stateGetNotes, setStateGetNotes] = useState(true);
+    const [searchArrayNotes, setSearchArrayNotes] = useState([]);
 
 
     let tempArrayNotes = [];  
@@ -37,6 +38,8 @@ export const ViewNotes = (props) =>{
                 tempArrayNotes.push(newNote);
             });
             setArrayNotes(tempArrayNotes);
+            setSearchArrayNotes(tempArrayNotes);
+
         })
         .catch((error) => console.log('Error: ', error.message)) 
     },[]);
@@ -70,25 +73,40 @@ export const ViewNotes = (props) =>{
                 tempArrayNotes.push(newNote);
             });
             setArrayNotes(tempArrayNotes);
+            setSearchArrayNotes(tempArrayNotes);
         })
         .catch((error) => console.log('Error: ', error.message)) 
     }
 
+    const getSearch = (e) => {
+        const valueSearch = e.target.value;
+        if(valueSearch!==''){
+            const newArraySearchNotes = searchArrayNotes.filter((search)=>{
+               return search.title.toLowerCase().includes(valueSearch.toLowerCase());
+            })
+            setArrayNotes(newArraySearchNotes);
+        }else{
+            setArrayNotes(searchArrayNotes)
+        }
+    };
+
     return (
         <section className='contentNote'>
             <header className='box-header'>
-                <h3 >Simple Notes</h3>
+                <div className='boxName'>
+                    <h3 >Simple Notes</h3>
+                </div>
                 <div className='box-search'>
                     <MdSearch className='search-icon' size='2em'></MdSearch>
-                    <input type="search" placeholder='Find Your Note'/>
+                    <input type="search" placeholder='Find your notes by title' onChange={getSearch}/>
                 </div>
                 <div className='signout'>
-                    <MdLogout className='Logout-icon' size='3em' onClick={handleSingOut}></MdLogout>
+                    <MdLogout className='Logout-icon' size='2.5em' onClick={handleSingOut}></MdLogout>
                     <p>sign out</p>
                 </div>
             </header>
-            <main className='box-option-notes'>
-                    <div className='box-option'>
+            <section className='box-option-notes'>
+                <div className='box-option'>
                         {
                             stateReturn?
                             <Return 
@@ -97,40 +115,61 @@ export const ViewNotes = (props) =>{
                             setArrayNotes={setArrayNotes}
                             setStateRecycle = {setStateRecycle} 
                             userId = {userId}
-                            setStateGetNotes={setStateGetNotes}                            >
+                            setStateGetNotes={setStateGetNotes}>
                             </Return>
                             :
-                            <>
-                                <img src={imgMas} alt="" className='img-option' id='imgAdd' onClick={addNotes}></img>
-                                <p className='img-option' id='textAdd'>Add Notes</p>
-                                <img src={imgCategoria} alt="" className='img-option' id='imgCategory'></img>
-                                <p className='img-option' id='textCategory'>Category</p>
-                                <img src={imgRecycle} alt="" className='img-option' id='imgRecycle' onClick={recycler}></img>
-                                <p className='img-option' id='textRecycle'>Recycle</p>
-                            </>
-                        }
-                    </div>
+                            <div className='boxOptionBtn'>
+                                <div className='btnAdd'>
+                                    <img src={imgMas} alt="" className='img-option' id='imgAdd' onClick={addNotes}></img>
+                                    <p className='img-option' id='textAdd'>Add Notes</p>
+
+                                </div>
+                                <div className='btnCategory'>
+                                    <img src={imgCategoria} alt="" className='img-option' id='imgCategory'></img>
+                                    <p className='img-option' id='textCategory'>Category</p>
+                                </div>
+                                <div className='btnRecycle'>
+                                    <img src={imgRecycle} alt="" className='img-option' id='imgRecycle' onClick={recycler}></img>
+                                    <p className='img-option' id='textRecycle'>Recycle</p>
+                                </div>                                
+                            </div>
+                        } 
+                </div>         
                           
                 <div className='box-notes' >
                     {
                         stateAddNote?
-                        <AddNotes arrayNotes={arrayNotes} setArrayNotes={setArrayNotes} setStateAddNote={setStateAddNote} currentUserId ={userId}></AddNotes>
+                            <AddNotes 
+                            arrayNotes={arrayNotes} 
+                            setArrayNotes={setArrayNotes} 
+                            setStateAddNote={setStateAddNote} 
+                            currentUserId ={userId} 
+                            setSearchArrayNotes={setSearchArrayNotes}
+                            ></AddNotes>
                         : null
                     }
                     {
                         stateGetNotes? 
-                            <Notes arrayNotes = {arrayNotes} setArrayNotes={setArrayNotes}></Notes>
+                            <Notes 
+                            arrayNotes = {arrayNotes} 
+                            setArrayNotes={setArrayNotes}
+                            setSearchArrayNotes={setSearchArrayNotes}
+                            ></Notes>
                         :null
                     }                                                      
                       
                     {
                         stateRecycle?
-                            <Recycle arrayNotes = {arrayNotes} setArrayNotes={setArrayNotes}></Recycle> 
+                            <Recycle 
+                            arrayNotes = {arrayNotes} 
+                            setArrayNotes={setArrayNotes}
+                            setSearchArrayNotes={setSearchArrayNotes}
+                            ></Recycle> 
                         : null
                     }
                                                      
                 </div>
-            </main>
+            </section>
         </section>
     );
 };

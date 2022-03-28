@@ -7,9 +7,10 @@ export const Notes = ( props ) => {
     const deleteNotes = (idNote, title) => {
         const confirmDelete = confirm('Do you want to delete the note ' + title +'?');
         if(confirmDelete){
-            updateStateNote(idNote).then(() => {
+            updateStateNote(idNote, false).then(() => {
                 const newArrayNotes = [...props.arrayNotes].filter((objNote)=>objNote.id!==idNote);
                 props.setArrayNotes(newArrayNotes);
+                props.setSearchArrayNotes(newArrayNotes);
             }).catch(() => { 
                 alert('Error trying to delete note '+ idNote)
             });
