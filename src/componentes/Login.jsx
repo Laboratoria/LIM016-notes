@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Estilos/register.scss';
-import {signIn } from '../firebase/auth'
+import {signIn, singInGoogle } from '../firebase/auth';
+import {FcGoogle} from 'react-icons/fc';
+ 
+
 
 
 import imgLogoNotes from '../imagenes/logoNotes.jpg';
@@ -16,6 +19,8 @@ export const LogIn = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate ();
 
+    
+    const handleGoogleSubmit = (e) => singInGoogle();
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
     const handleSubmit = async (e) => {
@@ -27,7 +32,9 @@ export const LogIn = () => {
         } catch(error) {
             setError('Your email or password are wrong');  
         }      
-    }
+    };
+
+    
     return (
         <section className='box-login'>
             <div className='boxWelcome'> 
@@ -51,6 +58,13 @@ export const LogIn = () => {
                 </div>
                 <p className='optionSignUp'>Don´t you have an account?<Link to='/signup'> Sign Up </Link></p>
             </form>
+
+            <p className='textOption' id='log'>or log in with:</p>
+            <div className='box-fb-go' id='log'>
+                <FcGoogle onClick= {handleGoogleSubmit} className='img-go' size='2em' id='log'></FcGoogle>
+                <img src={imgIconoFb} alt="" className='img-fb' id='log'></img>
+            </div>
+            <p className='optionSignUp' id='log'>Don´t you have an account?<Link to='/signup'> Sign Up </Link></p>
         </section>
     );
 };
