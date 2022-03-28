@@ -28,7 +28,6 @@ export const ViewNotes = (props) =>{
 
     let tempArrayNotes = [];  
     let userId = props.currentUser;
-    console.log('id de viewnotes', userId) 
     useEffect(()=>{
         getNotesByUserAndState(userId, true)
         .then((response) => {
@@ -126,7 +125,8 @@ export const ViewNotes = (props) =>{
                       
                     {
                         stateRecycle?
-                        <Recycle arrayNotes = {arrayNotes} setArrayNotes={setArrayNotes}></Recycle> : null
+                            <Recycle arrayNotes = {arrayNotes} setArrayNotes={setArrayNotes}></Recycle> 
+                        : null
                     }
                                                      
                 </div>
