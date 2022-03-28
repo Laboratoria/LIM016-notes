@@ -20,7 +20,7 @@
 
 .boxName>h3{
     font-family: "Risque";
-    font-size: 40px;
+    font-size: 3vw;
 }
 
 .box-search{
@@ -123,9 +123,17 @@
     box-shadow: 0em .5em .5em rgba(14, 13, 13, 0.5);
   }
 
-  .note-list>p{
-    white-space: pre-line
+  .noteDescrip{
+    white-space: pre-line;
+    overflow-y: scroll;
+    
   }
+
+  .noteDescrip::-webkit-scrollbar {
+    display: none;
+}
+
+  
 
   .note-footer{
     display: flex;
