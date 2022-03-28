@@ -123,6 +123,10 @@
     box-shadow: 0em .5em .5em rgba(14, 13, 13, 0.5);
   }
 
+  .note-list>p{
+    white-space: pre-line
+  }
+
   .note-footer{
     display: flex;
     align-items: center;

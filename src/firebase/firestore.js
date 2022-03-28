@@ -1,5 +1,6 @@
+import { db } from './config'
+
 import {
-    db,
     collection,
     addDoc,
     doc,
@@ -10,7 +11,7 @@ import {
     onSnapshot,
     deleteDoc,
     updateDoc
-} from './config'
+} from "firebase/firestore";
 
 export const addNote = (note) => {
     return addDoc(collection(db, 'notes'), note);

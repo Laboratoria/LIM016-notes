@@ -13,7 +13,6 @@ import {Recycle} from './Recycle'
 import  imgMas from '../imagenes/mas.png';
 import  imgCategoria from '../imagenes/categoria.png';
 import  imgRecycle from '../imagenes/recycle-bin.png';
-import { connectFirestoreEmulator } from 'firebase/firestore';
 
 export const ViewNotes = (props) =>{
 
