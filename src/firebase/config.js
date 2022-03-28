@@ -4,20 +4,7 @@ import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from 'firebase/auth';
 
- import { 
-   getFirestore,
-   collection,
-   addDoc,
-   doc,
-   getDoc,
-   setDoc,
-   query,
-   where,
-   getDocs,
-   onSnapshot,
-   deleteDoc,
-   updateDoc
- } from "firebase/firestore";
+ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyBkUNvRt7tYhGlV3z5nvMhLEG5ylQywhqE',
@@ -35,18 +22,8 @@ const db = getFirestore(app);
 
 
 // Export fireAuth
-export {
-  auth,
-  db,
-  collection,
-  addDoc,
-  doc,
-  getDoc,
-  setDoc,
-  query,
-  where,
-  getDocs,
-  onSnapshot,
-  deleteDoc,
-  updateDoc
-}
+export {auth};
+
+// Export FireStore
+export { db };
+

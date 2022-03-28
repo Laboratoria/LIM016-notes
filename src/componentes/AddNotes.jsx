@@ -25,6 +25,7 @@ export const AddNotes = ( props ) => {
             const newArrayNotes = [...props.arrayNotes, note]
             e.target.reset();
             props.setArrayNotes(newArrayNotes);
+            props.setSearchArrayNotes(newArrayNotes);
             props.setStateAddNote(false);
         })
         .catch((error) => console.log(error.message));   

@@ -7,9 +7,11 @@ import {FcGoogle} from 'react-icons/fc';
 
 
 
-export const imgLogoNotes = new URL('../imagenes/logoNotes.jpg', import.meta.url);
-const imgIconoGo = new URL('../imagenes/iconoGo.png', import.meta.url);
-const imgIconoFb = new URL('../imagenes/iconoFb.png', import.meta.url);
+import imgLogoNotes from '../imagenes/logoNotes.jpg';
+import imgIconoGo from '../imagenes/iconoGo.png';
+import imgIconoFb from '../imagenes/iconoFb.png';
+
+export { imgLogoNotes }
 
 export const LogIn = () => {
     const [email, setEmail] = useState('')
@@ -35,17 +37,28 @@ export const LogIn = () => {
     
     return (
         <section className='box-login'>
-            <h3 className='welcome' id='log'>Welcome To</h3>
-            <div className='box-logo' id='log'>
-                <img src={imgLogoNotes} alt="" className='img-logo' id='log'></img>
-                <h1 className='name-notes' id='log'>Simple Notes</h1>
-            </div>
+            <div className='boxWelcome'> 
+                <h3 className='welcome' >Welcome To</h3>
+                <div className='box-logo'>
+                    <img src={imgLogoNotes} alt="" className='img-logo'></img>
+                    <h1 className='name-notes'>Simple Notes</h1>
+                </div>
+            </div>          
             {error && <p className='error'>{error}</p>}
-            <form action="" className='box-form' id='log' onSubmit={handleSubmit}>
-                <input type="email" className='email' id='log' placeholder='Enter your email' onChange={handleEmail} />
-                <input type="password" className='paswword' id='log' placeholder='Password' onChange={handlePassword} />
-                <button type='submit' className='btn-login' id='log' >Log In</button>
+            <form action="" className='box-form' onSubmit={handleSubmit}>
+                <div className='boxInput'>
+                    <input type="email" className='email' placeholder='Enter your email' onChange={handleEmail} />
+                    <input type="password" className='paswword' placeholder='Password' onChange={handlePassword} />
+                    <button type='submit' className='btn-login' >Log In</button>
+                </div>
+                <p className='textOption'>or log in with:</p>
+                <div className='box-fb-go'>
+                    <img src={imgIconoGo} alt="" className='img-fb' ></img>
+                    <img src={imgIconoFb} alt="" className='img-go' ></img>
+                </div>
+                <p className='optionSignUp'>Don´t you have an account?<Link to='/signup'> Sign Up </Link></p>
             </form>
+
             <p className='textOption' id='log'>or log in with:</p>
             <div className='box-fb-go' id='log'>
                 <FcGoogle onClick= {handleGoogleSubmit} className='img-go' size='2em' id='log'></FcGoogle>
