@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 export const Notes = (props) => {
-    const [edit, setEdit] = useState(false);
+    //const [edit, setEdit] = useState(false);
 
     const deleteNotes = (idNote, title) => {
         const confirmDelete = confirm('Do you want to delete the note ' + title + '?');
@@ -24,7 +24,7 @@ export const Notes = (props) => {
         //setEdit(true);
         console.log('hola');
     };
-
+    
     const templateList = props.arrayNotes.map((note) => {
         return (
             <div key={note.id} className='note-list'>
@@ -43,7 +43,7 @@ export const Notes = (props) => {
                                 <div className="modal-dialog">
                                     <div className="modal-content">
                                         <div className="modal-header">
-                                            <input className="form-control" id="title" type="text" placeholder='Note Title'/>
+                                            <input className="form-control" id="title" type="text" placeholder='Note Title' />
                                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div className="modal-body">
@@ -61,10 +61,6 @@ export const Notes = (props) => {
                 </div>
             </div>
         )
-
-    });
-
-
-    return templateList;
+    })
+    return templateList; 
 };
-
