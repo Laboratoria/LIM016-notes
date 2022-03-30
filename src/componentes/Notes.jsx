@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { MdDeleteForever, MdCreate } from 'react-icons/md';
 import { updateStateNote } from '../firebase/firestore';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/js/bootstrap.bundle.min';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
+
 
 export const Notes = (props) => {
     //const [edit, setEdit] = useState(false);
@@ -19,44 +22,56 @@ export const Notes = (props) => {
             });
         }
     }
+    const showModal = async(e) => {
+        const MySwal = withReactContent(Swal)
 
+        MySwal.fire({
+            title: 'Edit your Note',
+            html:
+              '<input id="swal-input1" class="swal2-input" placeholder="Title">' +
+              '<input id="swal-input2" class="swal2-input" placeholder="Write your note">',
+            didOpen: () => {
+    // `MySwal` is a subclass of `Swal`
+    //   with all the same instance & static methods
+    MySwal.clickConfirm()
+  }
+}).then(() => {
+  return MySwal.fire(<p>Shorthand works too</p>)
+})
+        /* const { value: formValues } = await Swal.fire({
+            title: 'Edit your Note',
+            html:
+              '<input id="swal-input1" class="swal2-input" placeholder="Title">' +
+              '<input id="swal-input2" class="swal2-input" placeholder="Write your note">',
+            focusConfirm: false,
+            preConfirm: () => {
+              return 'You update your note'
+                //document.getElementById('swal-input1').value,
+                //document.getElementById('swal-input2').value
+            }
+        })
+          
+          if (formValues) {
+            Swal.fire(JSON.stringify(formValues))
+          } */
+    };
+    
+    
     const editNote = () => {
         //setEdit(true);
         console.log('hola');
     };
-    
+
     const templateList = props.arrayNotes.map((note) => {
         return (
             <div key={note.id} className='note-list'>
                 <h3>{note.title}</h3>
-                <p>{note.description}</p>
+                <p className='noteDescrip'>{note.description}</p>
                 <div className='note-footer'>
                     <h2> {note.date}</h2>
                     <div>
                         <MdDeleteForever className='delete-icon' size='1.3em' onClick={() => deleteNotes(note.id, note.title)}></MdDeleteForever>
-                        <div>
-                            <button type="button" className="btn btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <MdCreate className='create-icon' size='1.3em' onClick={editNote} ></MdCreate>
-                            </button>
-
-                            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div className="modal-dialog">
-                                    <div className="modal-content">
-                                        <div className="modal-header">
-                                            <input className="form-control" id="title" type="text" placeholder='Note Title' />
-                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div className="modal-body">
-                                            <input type="text" className="form-control" id='description' placeholder='Type to add a note'></input>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" className="btn btn-primary">Save Changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <MdCreate className='create-icon' size='1.3em' onClick={()=> showModal()} ></MdCreate>
                     </div>
                 </div>
             </div>

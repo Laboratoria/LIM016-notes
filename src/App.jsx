@@ -4,7 +4,7 @@ import { SignUp } from './componentes/Signup';
 import { ViewNotes } from './componentes/Viewnotes';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { stateAuthUser } from './firebase/auth';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
